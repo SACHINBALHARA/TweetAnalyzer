@@ -31,14 +31,14 @@ Clone the repository:
 bash
 Copy
 Edit
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/your-username/your-repo-name.git  
+cd your-repo-name  
 Install the required Python packages:
 
 bash
 Copy
 Edit
-pip install -r requirements.txt
+pip install -r requirements.txt  
 Download the trained model (text_classification_model.h5) from the link below and place it in the root of the repository.
 
 Download Model from Google Drive
@@ -51,7 +51,7 @@ Run the application using Python:
 bash
 Copy
 Edit
-python app1.py
+python app1.py  
 Open the web browser and navigate to http://localhost:5000 (or the provided local server URL).
 
 Enter a tweet in the input field and click the "Analyze" button to see the sentiment classification.
