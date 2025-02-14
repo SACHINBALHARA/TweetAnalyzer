@@ -55,3 +55,25 @@ The web app comes with the following capabilities for users:
    git clone https://github.com/your-username/your-repo-name.git  
    cd your-repo-name  
 
+2. Install the required Python packages:
+   '''bash
+   pip install -r requirements.txt
+
+3. Download the trained model (text_classification_model.h5) from the link below and place it in the root of the repository.
+ ***Download Model from Google Drive***
+
+## **🚀 How to Run the App**
+1. Ensure the model file (text_classification_model.h5) is in the project directory.
+
+2. Run the application using Python:
+   '''bash
+   python app1.py
+
+3. Open the web browser and navigate to http://localhost:5000 (or the provided local server URL).
+
+4. Use the navigation options to explore the app and its features.
+
+
+
+   
+   
