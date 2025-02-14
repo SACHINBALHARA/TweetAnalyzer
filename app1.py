@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import pickle
 import re
-pip install tensorflow
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from PIL import Image
