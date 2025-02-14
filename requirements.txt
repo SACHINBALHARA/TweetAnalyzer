@@ -7,3 +7,5 @@ gdown
 openpyxl
 tensorflow
 xlrd
+scikit-learn
+nltk
