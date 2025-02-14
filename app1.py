@@ -3,6 +3,8 @@ import pandas as pd
 import numpy as np
 import pickle
 import re
+import gdown
+import os
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from PIL import Image
@@ -13,6 +15,7 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import nltk
 from nltk.corpus import stopwords
+
 
 import tweepy
 # Download stopwords if not already downloaded
@@ -28,15 +31,28 @@ def load_tokenizer():
     with open("tokenizer.pkl", "rb") as handle:
         return pickle.load(handle)
 
+# ✅ Download Model from Google Drive
+@st.cache_resource
+def download_model():
+    # Google Drive link (replace with your actual link)
+    drive_link = "https://drive.google.com/file/d/1AH9w7IzeKx3UN_d-FQY7r61dNboG5v8F/view?usp=sharing"
+    model_file = "text_classification_model.h5"
+
+    # Download the model if it doesn't already exist
+    if not os.path.exists(model_file):
+        gdown.download(drive_link, model_file, quiet=False)
+    
+    return model_file
+
 # ✅ Load Pretrained Sentiment Model
 @st.cache_resource
 def load_sentiment_model():
-    return load_model("text_classification_model.h5")
+    model_file = download_model()  # Ensure model is downloaded
+    return load_model(model_file)
 
 # ✅ Load Tokenizer & Model
 tokenizer = load_tokenizer()
 model = load_sentiment_model()
-
 
 # ✅ Define Preprocessing Function
 def preprocess_text(text):
