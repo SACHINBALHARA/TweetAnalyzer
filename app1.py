@@ -25,6 +25,12 @@ stop_words = set(stopwords.words("english"))
 # ✅ Set Page Config FIRST to avoid Streamlit API Exception
 st.set_page_config(page_title="Twitter Sentiment Analyzer", layout="wide")
 
+import os
+import pickle
+import gdown
+import streamlit as st
+from keras.models import load_model
+
 # ✅ Load Tokenizer
 @st.cache_resource
 def load_tokenizer():
@@ -34,26 +40,41 @@ def load_tokenizer():
 # ✅ Download Model from Google Drive
 @st.cache_resource
 def download_model():
-    # Google Drive link (replace with your actual link)
-    drive_link = "https://drive.google.com/file/d/1AH9w7IzeKx3UN_d-FQY7r61dNboG5v8F"
+    # Corrected Google Drive link for direct download
+    drive_link = "https://drive.google.com/uc?id=1AH9w7IzeKx3UN_d-FQY7r61dNboG5v8F"
     model_file = "text_classification_model.h5"
 
     # Download the model if it doesn't already exist
     if not os.path.exists(model_file):
+        print("Downloading the model...")
         gdown.download(drive_link, model_file, quiet=False)
+        print(f"Model downloaded and saved to {model_file}")
+
+    # Ensure the model file exists
+    if not os.path.exists(model_file):
+        raise FileNotFoundError(f"Model file not found at {model_file}")
     
+    # Optionally check file size to confirm download
+    file_size = os.path.getsize(model_file)
+    print(f"Downloaded model file size: {file_size} bytes")
+
     return model_file
 
 # ✅ Load Pretrained Sentiment Model
 @st.cache_resource
 def load_sentiment_model():
     model_file = download_model()  # Ensure model is downloaded
-    return load_model(model_file)
+    try:
+        # Load the model
+        model = load_model(model_file)
+        print("Model loaded successfully.")
+        return model
+    except OSError as e:
+        raise OSError(f"Error loading the model from {model_file}: {e}")
 
 # ✅ Load Tokenizer & Model
 tokenizer = load_tokenizer()
 model = load_sentiment_model()
-
 # ✅ Define Preprocessing Function
 def preprocess_text(text):
     text=text.lower()             # convert to lowercase
