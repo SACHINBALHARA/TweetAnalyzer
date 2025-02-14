@@ -8,7 +8,7 @@ This project is a web application for performing sentiment analysis on tweets us
 
 Here's an overview of the files in the repository:  
 
-- `app1.py` - The main application script that runs the web app using a web framework (e.g., Flask or Streamlit).  
+- `app1.py` - The main application script that runs the web app using a web framework (e.g., Flask or Streamlit). 
 - `performing-twitter-sentiment-analysis1.jpg` - An image demonstrating the sentiment analysis process or used in the app UI.  
 - `preprocess_text.pkl` - A serialized Python object used for text preprocessing (e.g., tokenization, stopword removal).  
 - `preprocessing_info.json` - A JSON file containing configuration details or metadata for preprocessing.  
