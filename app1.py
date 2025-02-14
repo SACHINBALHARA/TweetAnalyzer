@@ -35,7 +35,7 @@ def load_tokenizer():
 @st.cache_resource
 def download_model():
     # Google Drive link (replace with your actual link)
-    drive_link = "https://drive.google.com/file/d/1AH9w7IzeKx3UN_d-FQY7r61dNboG5v8F/view?usp=sharing"
+    drive_link = "https://drive.google.com/drive/folders/1zUEzBJeYlMatNQgpeeM7qQAyU5-ntEmw?usp=sharing"
     model_file = "text_classification_model.h5"
 
     # Download the model if it doesn't already exist
